@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="row mt-5 p-5 shadow rounded bg-light w-50">
+        <div class="col">
+            <form action="" class="row g-3">
+                {{ form.hidden_tag() }}
+                <h3 class="mb-4 text-center">Sign Up Now!</h3>
+                <div class="col-md-6">
+                    {{ form.first_name.label }}
+                    {{ form.first_name(class='form-control mt-2')}}
+                </div>
+                <div class="col-md-6">
+                    {{ form.last_name.label }}
+                    {{ form.last_name(class='form-control mt-2')}}
+                </div>
+                <div class="col-md-12">
+                    {{ form.gender.label }}
+                    {{ form.gender(class='form-control mt-2')}}
+                </div>
+                <div class="col-md-12">
+                    {{ form.username.label }}
+                    {{ form.username(class='form-control mt-2')}}
+                    {% for error in form.username.errors %}
+                        <div class="invalid-feedback d-block"> {{ error }} </div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-12">
+                    {{ form.email.label }}
+                    {{ form.email(class='form-control mt-2')}}
+                    {% for error in form.email.errors %}
+                        <div class="invalid-feedback d-block"> {{ error }} </div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-6">
+                    {{ form.password.label }}
+                    {{ form.password(class='form-control mt-2')}}
+                    {% for error in form.password.errors %}
+                        <div class="invalid-feedback d-block"> {{ error }} </div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-6">
+                    {{ form.confirm_password.label }}
+                    {{ form.confirm_password(class='form-control mt-2')}}
+                    {% for error in form.confirm_password.errors %}
+                        <div class="invalid-feedback d-block"> {{ error }} </div>
+                    {% endfor %}
+                </div>
+                <div class="col-12">
+                    {{ form.submit(class='btn btn-primary w-100')}}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

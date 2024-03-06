@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Title</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="container-fluid justify-content-center">
+    <div class="row shop-header p-5">
+        <div class="col-3 ms-5 d-flex flex-column justify-content-center">
+            <h2>Welcome to your Restaurants!</h2>
+            <a href="#" class="btn btn-outline-dark mt-3">Find New Restaurants</a>
+        </div>
+    </div>
+    {% for venue in restaurants %}
+    <style>
+        .carousel-item{
+            height: 32rem;
+            background: #777;
+            color:white;
+            position: relative
+        }
+        .container{
+            position: absolute;
+            bottom:0;
+            left:0;
+            right:0;
+            padding-bottom: 200px;
+        }
+    </style>
+
+
+    <div id="myCarousel" class="carousel slide"
+    data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" 
+            data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" 
+            data-slide-to="1"></li>
+        </ol>
+        <div class="class carousel-inner">
+            <div class="carousel-item active"> 
+        <div class="class container">
+            <h5 class="card-title"> {{ venue.name }}</h5>
+                <p class="card-text">{{ venue.city }}</p>
+                <p class="card-text">{{ venue.state }}</p>
+                <p class="card-text">{{ venue.demographics }}</p>
+                <div class="mt-2">
+                    <a href="{{url_for('site.update', id=venue.prod_id )}}" class="card-link btn btn-warning">Update Product</a>
+                    <a href="{{url_for('site.delete', id=venue.prod_id )}}" class="card-link btn btn-danger">Delete Product</a>
+                </div>
+        </div>
+        <div class="class carousel-inner">
+            <div class="carousel-item"> 
+        <div class="class container">
+            <h5 class="card-title"> {{ venue.name }}</h5>
+                <p class="card-text">{{ venue.city }}</p>
+                <p class="card-text">{{ venue.state }}</p>
+                <p class="card-text">{{ venue.demographics }}</p>
+                <div class="mt-2">
+                    <a href="{{url_for('site.update', id=venue.prod_id )}}" class="card-link btn btn-warning">Update Product</a>
+                    <a href="{{url_for('site.delete', id=venue.prod_id )}}" class="card-link btn btn-danger">Delete Product</a>
+                </div>
+        </div>
+        <a href="#myCarousel"
+        class="carousel-contol-prev" role="button"
+        data-slide="prev">
+            <span class="sr-only">Previous</span>
+            <span class="carousel-control-prev-icon"
+            aria-hidden="true"></span>
+        </a>
+        <a href="#myCarousel"
+        class="carousel-contol-next" role="button"
+        data-slide="next">
+            <span class="sr-only">Next</span>
+            <span class="carousel-control-next-icon"
+            aria-hidden="true"></span>
+        </a>
+
+
+    </div>
+
+
+{% endblock content %}
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

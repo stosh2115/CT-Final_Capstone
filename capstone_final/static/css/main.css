@@ -1,0 +1,35 @@
+
+
+.shop-header {
+    background-image: url("https://us.123rf.com/450wm/loft39studio/loft39studio2306/loft39studio230694549/207191763-generative-ai-abstract-blur-and-defocused-night-bar-and-restaurant-for-background.jpg?ver=6");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 95vh;  
+    color: white;
+}
+
+.restaurants-stats {
+    color: white; 
+}
+
+.nav-custom{
+    font-size: 25px;
+}
+
+.nav-custom:hover {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 8px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+#signInLink:hover, #signUpLink:hover {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 8px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+

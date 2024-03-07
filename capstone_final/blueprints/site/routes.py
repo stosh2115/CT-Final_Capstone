@@ -2,7 +2,8 @@ from flask import Blueprint, render_template, flash, redirect, request
 # from capstone_final.helpers import get_venue
 
 from capstone_final.models import Venues, db
-from capstone_final.forms import VenueForm
+from capstone_final.forms import VenueForm, UpdateForm
+
 
 
 
@@ -15,7 +16,8 @@ site = Blueprint('site', __name__, template_folder='site_templates')
 def restaurants():
     # get_venue("Red Robin")
     allprods = Venues.query.all()
-    return render_template('restaurants.html', restaurants=allprods)
+    counter = 0
+    return render_template('shop.html', restaurants=allprods, counter=counter)
 
 @site.route('/restaurants/create', methods=['GET', 'POST'])
 def create():
@@ -23,15 +25,15 @@ def create():
 
     if request.method == 'POST' and createform.validate_on_submit():
 
-        demographics_percent = createform.demographics.data / 100.0
 
         name = createform.name.data
         city = createform.city.data
         state = createform.state.data
         location = createform.location.data
-        demographics_percent = createform.demographics.data
+        demographics = int(createform.demographics.data)
+        image = createform.image.data
 
-        venue = Venues(name, city, state, location, demographics=demographics_percent)
+        venue = Venues(name, city, state, location, demographics, image=image)
 
         db.session.add(venue)
         db.session.commit()
@@ -46,20 +48,15 @@ def create():
     return render_template('create.html', form=createform)
 
 
-@site.route('/restaurants/update/<id>', methods=['GET', 'POST'])
+@site.route('/shop/update/<id>', methods=['GET', 'POST'])
 def update(id):
     venue = Venues.query.get(id)
-    updateform = VenueForm()
+    updateform = UpdateForm()
 
     if request.method == 'POST' and updateform.validate_on_submit():
 
-        demographics_percent = updateform.demographics.data / 100.0
+        demographics_percent = updateform.demographics.data
 
-
-        venue.name = updateform.name.data
-        venue.city = updateform.city.data
-        venue.state = updateform.state.data
-        venue.location = updateform.location.data
         venue.demographics = demographics_percent
 
         db.session.commit()
@@ -74,7 +71,7 @@ def update(id):
     return render_template('update.html', form=updateform, venue=venue)
 
 
-@site.route('/restaurants/delete/<id>')
+@site.route('/shop/delete/<id>')
 def delete(id):
 
     venue = Venues.query.get(id)

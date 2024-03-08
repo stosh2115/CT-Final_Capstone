@@ -19,9 +19,17 @@
         {{ form.location.label}}
         {{ form.location(class='form-control mt-2')}}
     </div>
-    <div class="col-12">
-        {{ form.demographics.label}}
-        {{ form.demographics(class='form-control mt-2')}}
+    <div class="col-4">
+        {{ form.male.label}}
+        {{ form.male(class='form-control mt-2')}}
+    </div>
+    <div class="col-4">
+        {{ form.female.label}}
+        {{ form.female(class='form-control mt-2')}}
+    </div>
+    <div class="col-4">
+        {{ form.other.label}}
+        {{ form.other(class='form-control mt-2')}}
     </div>
     <div class="col-12">
         {{ form.image.label}}

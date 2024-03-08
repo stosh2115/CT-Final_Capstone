@@ -30,10 +30,12 @@ def create():
         city = createform.city.data
         state = createform.state.data
         location = createform.location.data
-        demographics = int(createform.demographics.data)
+        male = createform.male.data
+        female = createform.female.data
+        other = createform.other.data
         image = createform.image.data
 
-        venue = Venues(name, city, state, location, demographics, image=image)
+        venue = Venues(name, city, state, location, male,female, other, image=image)
 
         db.session.add(venue)
         db.session.commit()
@@ -55,9 +57,13 @@ def update(id):
 
     if request.method == 'POST' and updateform.validate_on_submit():
 
-        demographics_percent = updateform.demographics.data
+        venue.male = updateform.male.data
 
-        venue.demographics = demographics_percent
+        venue.female = updateform.female.data
+
+        venue.other = updateform.other.data
+    
+
 
         db.session.commit()
 

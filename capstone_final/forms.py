@@ -23,13 +23,17 @@ class VenueForm(FlaskForm):
     city = StringField('City', validators=[ DataRequired() ])
     state = StringField('State', validators=[ DataRequired() ])
     location = StringField('Location', validators=[ DataRequired()])
-    demographics = IntegerField('Demographics % (Male,Female,Other)', validators=[ DataRequired()])
+    male = IntegerField('Male %')
+    female = IntegerField('Female %')
+    other = IntegerField('Other %')
     image = StringField('Image URL')
     submit = SubmitField('Submit')
 
 class UpdateForm(FlaskForm):
 
-    demographics = IntegerField('Demographics % (Male,Female,Other)', validators=[ DataRequired()])
+    male = IntegerField('Male %')
+    female = IntegerField('Female %')
+    other = IntegerField('Other %')
     submit = SubmitField('Submit')
 
 

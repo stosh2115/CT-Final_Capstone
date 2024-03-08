@@ -63,7 +63,9 @@
                         <p class="card-text">{{ venue.city }}</p>
                         <p class="card-text">{{ venue.state }}</p>
                         <p class="card-text">{{ venue.location }}</p>
-                        <p class="card-text">{{ venue.demographics  }}%</p>
+                        <p class="card-text">{{ venue.male  }}%-Male</p>
+                        <p class="card-text">{{ venue.female  }}%-Female</p>
+                        <p class="card-text">{{ venue.other }}%-Other</p>
                         <div class="mt-2">
                             <a href="{{url_for('site.update', id=venue.ven_id )}}" class="card-link btn btn-info btn-sm">Update Product</a>
                             <a href="{{url_for('site.delete', id=venue.ven_id )}}" class="card-link btn btn-danger btn-sm">Delete Product</a>

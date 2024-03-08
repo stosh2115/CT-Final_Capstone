@@ -55,16 +55,20 @@ class Venues(db.Model):
     city = db.Column(db.String(100))
     state = db.Column(db.String(100))
     location = db.Column(db.String(150))
-    demographics = db.Column(db.Integer)
+    male = db.Column(db.Integer)
+    female = db.Column(db.Integer)
+    other = db.Column(db.Integer)
     image = db.Column(db.String)
 
-    def __init__(self, name, city, state, location, demographics, image=""):
+    def __init__(self, name, city, state, location, male, female, other,image=""):
         self.ven_id = self.set_id()
         self.name = name
         self.city = city
         self.state = state
         self.location = location
-        self.demographics = demographics
+        self.male = male
+        self.female = female
+        self.other = other
         self.image = self.set_image(image,name)
 
 
